@@ -30,7 +30,7 @@ else{
     echo"<div id='nave-menu'>
         <ul>    <li id='hot-btn'> hot </li>
         <li id='perfil-btn'> perfil </li>
-        <li id='sair-btn'> sair </li></ul>
+        <a href='exit.php'><li id='sair-btn'> sair </li></a></ul>
         </div>";
 }
 ?>

@@ -3,11 +3,13 @@ require_once 'header.php';
 if(isset($_POST['user'])&& isset($_POST['password']))
 {   $user = sanit($_POST['user']);
     $pass = sanit($_POST['password']);
+    $pass = hash('ripemd160', $pass);
+    echo "$pass";
     $result = queryMysql("SELECT * FROM member WHERE username='$user' AND password='$pass'");
     if($result->num_rows)
     {   $_SESSION['user'] = $user;
         $_SESSION['password'] =$pass;
-        echo"<p>you are now logged in</p>";
+        echo"<p>Voce logou com sucesso</p>";
         $loggedin =TRUE;
     }else
     {

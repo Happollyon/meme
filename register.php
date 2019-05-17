@@ -6,6 +6,7 @@ if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
     {   $username = sanit($_POST['user']);
         $email =sanit($_POST['email']);
         $password = sanit($_POST['pass']);
+        $password = hash('ripemd160', $password);
 
 
         $query = "INSERT INTO member VALUES('$username', '$email', '$password')";
