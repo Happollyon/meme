@@ -10,28 +10,66 @@ if(isset($_SESSION['user']))
 }else $loggedin=FALSE;
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang='pt'>
 <head>
     <title>meme.com.br</title>
    <link rel="stylesheet" href="header.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
+<div id="cont">
 <?php
 if(!$loggedin)
 {
-    echo "<div id='nave-menu'>
-            <ul>   <a href='login.php'><li id='login-btn'>login</li></a>
-            <a href='register.php'><li id='sign-btn'>signup</li></a>
-         </ul></div>";
+    echo"
+    <div id='menu'>
+
+
+                <div id='memes'>
+                meme
+                </div>
+            <div id='menu1'>
+
+
+            <div id='log'> <a href='login.php'>login </a> </div>
+
+
+            <div id='sing'><a href='register.php'> Sign up</a></div>
+            </div>
+
+
+
+    </div>";
+
 
 }
 else{
-    echo"<div id='nave-menu'>
-        <ul>    <li id='hot-btn'> hot </li>
-        <li id='perfil-btn'> perfil </li>
-        <a href='exit.php'><li id='sair-btn'> sair </li></a></ul>
-        </div>";
+
+    echo"<div id='menu'>
+
+
+                <div id='memes'>
+                meme
+                </div>
+        <div id='menu2'>
+
+            <div id='search'>
+            
+            <form>
+            <input type='search' placeholder='procurar' name='procurar'>
+            </form>
+            
+            </div>
+            <div id='hot'> <a>Hot </a> </div>
+
+
+            <div id='perfil'><a>Perfil</a></div>
+            <div id='sair'><a href='exit.php'>Sair</a></div>
+        </div>
+</div>
+";
+
 }
 ?>
 

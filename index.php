@@ -1,27 +1,12 @@
 <?php
 require_once 'header.php';
 
-
-if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
-    {   $username = sanit($_POST['user']);
-        $email =sanit($_POST['email']);
-        $password = sanit($_POST['pass']);
-        $password = hash('ripemd160', $password);
-
-
-        $query = "INSERT INTO member VALUES('$username', '$email', '$password')";
-        queryMysql($query);
-
-
-    }
-
-
 ?>
-<link href="register.css" rel="stylesheet">
+<link href="index.css" rel="stylesheet">
 <div id="signup">
 
 
-    <form method="post" action="register.php">
+    <form method="post" action="register.php" onsubmit="stop()">
         <div id="signup_flex">
             <div>Usuario</div>
 
@@ -44,6 +29,13 @@ if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
             </div>
         </div>
     </form>
+
+</div>
+<div id="texto">
+    Junte-se e ganhe <br>reconhecimento pelos <br>seus memes.
+</div>
+<div id="imagem">
+    <img src="images/cc4.jpeg">
 
 </div>
 
