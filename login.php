@@ -1,25 +1,26 @@
 <?php
 require_once 'header.php';
-if(isset($_POST['user'])&& isset($_POST['password']))
-{   $user = sanit($_POST['user']);
+
+if(isset($_POST['user'])&& isset($_POST['password'])) {
+    $user = sanit($_POST['user']);
     $pass = sanit($_POST['password']);
     $pass = hash('ripemd160', $pass);
 
     $result = queryMysql("SELECT * FROM member WHERE username='$user' AND password='$pass'");
-    if($result->num_rows)
-    {   $_SESSION['user'] = $user;
-        $_SESSION['password'] =$pass;
+    if ($result->num_rows) {
+        $_SESSION['user'] = $user;
+        $_SESSION['password'] = $pass;
 
-        $loggedin =TRUE;
-    }else
-    {
-        echo"<p>verifique usuario/senha.</p>";
+        $loggedin = TRUE;
+        header('location:http://localhost/meme/main.php');
+    } else {
+        echo "<p>verifique usuario/senha.</p>";
     }
-}else{
-    echo "<p>Entre usuario e senha</p>";
 }
+
+
 ?>
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="style/login.css">
 <div id="loginform">
 
 <form action="login.php" method="post">

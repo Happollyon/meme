@@ -11,13 +11,16 @@ if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
 
         $query = "INSERT INTO member VALUES('$username', '$email', '$password')";
         queryMysql($query);
+        header('location:http://localhost/meme/login.php');
+
+        exit();
 
 
     }
 
 
 ?>
-<link href="register.css" rel="stylesheet">
+<link href="style/register.css" rel="stylesheet">
 <div id="signup">
 
 

@@ -1,0 +1,47 @@
+#cont
+{   height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
+                        ". . . sign sign sign sign sign . . ."
+                        ". . . sign sign sign sign sign . . ."
+                        ". . . sign sign sign sign sign . . ."
+                        ". . . sign sign sign sign sign . . .";
+}
+#signup_flex  div{padding:3%;}
+
+#signup
+{   grid-area: sign;
+    background: #FF5B4F;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    width: 80%;
+    height: 80%;
+    margin-top: 10%;
+    border-radius: 15px;}
+
+
+
+input
+{
+    font-family: 'Press Start 2P', cursive;
+    color: #D7D2D2;
+    margin-top: 3%;
+    width: 80%;
+    padding: 1vh;
+    border-radius: 8px;
+
+}
+#signup-but
+{
+    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    color: #ffffff;
+    border-radius: 10px;
+    width: 40%;
+    border: none;
+    margin-left: 30%;
+
+    margin-bottom:      0px;
+
+}

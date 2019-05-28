@@ -13,7 +13,7 @@ if(isset($_SESSION['user']))
 <html lang='pt'>
 <head>
     <title>meme.com.br</title>
-   <link rel="stylesheet" href="header.css">
+   <link rel="stylesheet" href="style/header.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 

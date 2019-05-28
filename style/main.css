@@ -1,0 +1,62 @@
+#cont{height: auto;
+    background: #F3F3F3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: minmax(118px, 119px) 1auto 1fr 1fr;
+    grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu" "perfilbox perfilbox perfilbox Poster Poster Poster Poster Poster Poster Poster ." ". . . posts posts posts posts posts posts posts ." ". . . posts posts posts posts posts posts posts .";
+}
+#perfil-box
+{
+    grid-area: perfilbox;
+    background: #ffffff;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+    max-height: 400px;
+}
+input[type="text" i]
+{   margin: 1vh;
+    width: 90%;
+    padding: 3vh;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    border-radius: 15px;
+    border:none;
+
+}
+
+input[type="submit" ]
+
+{  margin: 1vh;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 1vh;
+    width: 13%;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+}
+#poster
+
+{   grid-area: Poster;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    background: rgba(255, 91, 79, 0.1);
+    border-radius: 15px;
+}
+#user{
+    font-family: 'Press Start 2P', cursive;
+}
+#post
+{
+    grid-area: posts;
+    display: flex;
+    flex-direction: column;
+
+}
+#post2{
+
+    background: #ffffff;
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
