@@ -1,5 +1,6 @@
 <?php
-require_once 'functions.php';
+include_once 'functions.php';
+
 
 session_start();
 if(isset($_SESSION['user']))
@@ -15,6 +16,7 @@ if(isset($_SESSION['user']))
     <title>meme.com.br</title>
    <link rel="stylesheet" href="style/header.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Press+Start+2P&display=swap" rel="stylesheet">
+
 </head>
 
 <body>

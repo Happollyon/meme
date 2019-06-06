@@ -20,7 +20,9 @@ if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
 
 
 ?>
+
 <link href="style/register.css" rel="stylesheet">
+<div id="error"></div>
 <div id="signup">
 
 
@@ -28,11 +30,11 @@ if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
         <div id="signup_flex">
             <div>Usuario</div>
 
-            <input type="text" name="user"placeholder="Entre seu usuario">
+            <input type="text" name="user"placeholder="Entre seu usuario" onblur="checkUser(this)">
 
             <div>Email</div>
 
-            <input type="text" name="email" placeholder="Entre seu email">
+            <input type="text" name="email" placeholder="Entre seu email"onblur="checkmail(this)">
 
             <div>Senha</div>
 
@@ -51,6 +53,42 @@ if(isset($_POST['user'])&&isset($_POST['email'])&&isset($_POST['pass']))
 </div>
 
 </div>
+<script>
+    function checkUser(user)
+    {
+        let ajaxRequest;
+        ajaxRequest = new   XMLHttpRequest();
+        ajaxRequest.onreadystatechange = function ()
+        { if(ajaxRequest.readyState == 4)
+        { let ajaxDisplay = document.getElementById("error") ;
+            ajaxDisplay.innerHTML =ajaxRequest.responseText;
+
+        }
+
+        }
+
+        let queryString =  "?user=" + user.value;
+        ajaxRequest.open("GET", "chekuser.php" + queryString, true);
+        ajaxRequest.send(null);
+    }
+    function checkmail(email)
+    {
+        let ajaxRequest;
+        ajaxRequest = new   XMLHttpRequest();
+        ajaxRequest.onreadystatechange = function ()
+        { if(ajaxRequest.readyState == 4)
+        { let ajaxDisplay = document.getElementById("error") ;
+            ajaxDisplay.innerHTML =ajaxRequest.responseText;
+
+        }
+
+        }
+
+        let queryString =  "?email=" + email.value;
+        ajaxRequest.open("GET", "chekuser.php" + queryString, true);
+        ajaxRequest.send(null);
+    }
+</script>
 
 </body>
 </html>

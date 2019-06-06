@@ -16,7 +16,7 @@ if(isset($_POST['text']) && $_POST['text']!="") // check if something has been p
 }
 
 ?>
-/*Post form*/
+
 <link rel="stylesheet" href="style/main.css" >
 <div id="poster">
     <form method="post" action="">
@@ -43,65 +43,74 @@ echo "<div id='perfil-box'>".$user."  memes: ".$num."<br><br>" //shows the name 
         ."Seguindo: ".$num2."" // number of people following
         ."  Seguidores:".$num3."<br><br>" // number of followers
 ."</div>";
+echo
+"<div id='post' class='$user'>"
+
 
 
 ?>
 
 
-<?php
 
-
- echo"<div id='post'>";
- $query="SELECT text, user, post_id, DATEDIFF(NOW(),post_date) from posts ORDER BY post_date DESC";
-
- $result= queryMysql($query);
- $num = $result->num_rows; //number of rows in table
- for($j=0; $j<$num;$j++) //interacts over every row
- {
-
-     $row = $result->fetch_array(MYSQLI_ASSOC); // stores the data from posts in array
-     $post_id = encrypt($row['post_id']) ;  // encrypts data
-     $user_encrypted = encrypt($user);   // encrypts data
-     $like_encrypted = encrypt('1');     // encrypts data
-     $deslike_encrypted = encrypt('-1');     // encrypts data
-
-                // collecting sum of likes
-     $query= "SELECT SUM(likee) FROM likes WHERE post_id='".$row['post_id']."' AND likee=1";
-     $result2 =queryMysql($query);
-     $row2 = $result2->fetch_array(MYSQLI_ASSOC); // stores likes in array
-
-                // collecting sum o dislikes
-     $query= "SELECT SUM(likee) FROM likes WHERE post_id='".$row['post_id']."' AND likee=-1";
-     $result3 =queryMysql($query);
-     $row3= $result3->fetch_array(MYSQLI_ASSOC); // stores dislikes in array
-
-
-     $likes = $row2['SUM(likee)']; // sum of likes
-     $deslikes= $row3['SUM(likee)']; // sum of dislikes
-
-
-
-     // outputs the posts and its likes and dislikes
-
-     if($row['user']!=$user) // if the post wasnt made by the current user, the user isnt shown the delete option
-     {
-         // outputs post, user who posted it, number of likes and dislikes, number of days since it has been posted
-         echo "<div id='post2'><div id='user'>postado por: ".$row['user']."</div><br>".$row['text']. "<br> <a href='main.php?like=$like_encrypted&post_id=$post_id&user=$user_encrypted'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></a> ".$likes." 	<a href='main.php?like=$deslike_encrypted&post_id=$post_id&user=$user_encrypted'> <img src='images/icons8-down-arrow-40.png'> </a> ".$deslikes.
-              "<div id='data' style='color: #36FF89'>postado: "
-              .$row['DATEDIFF(NOW(),post_date)']. "D atras</div></div><br>";
-     } else // otherwise its shown
-         {
-
-                // everything as above + delete option.
-         echo "<div id='post2'><div id='user'>postado por: " . $row['user'] . "<a href='main.php?delete=$post_id'><img src='images/icons8-trash-32.png'></a> "." </div><br>" . $row['text'] . "<br> 	<a href='main.php?like=$like_encrypted&post_id=$post_id&user=$user_encrypted'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></a> " . $likes . " 	<a href='main.php?like=$deslike_encrypted&post_id=$post_id&user=$user_encrypted'> <img src='images/icons8-down-arrow-40.png'></a> " . $deslikes .
-              "<div id='data' style='color: #36FF89'>postado: "
-              . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div><br>";
-         }
-
- }
- echo "</div>"
-?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </div>
+
+<script>
+  function like(like, user, post_id) {
+
+       let urrl = 'likes.php?like='+like+'&user='+user+'&post_id='+post_id
+        $.ajax({
+            url: urrl,
+            type: 'GET',
+
+
+            success: function(data)
+            {   var data = JSON.parse(data)
+                let post_like  = data.post_id;
+                $("#"+ post_like).text(data.likes);
+                $("#D" +post_like).text(data.dislikes);
+            }
+        })}
+
+  let number =0;
+  {
+      let user = $("#post").attr('class')
+      let url = 'posts.php?number=' + number + '&user=' + user;
+      $(document).ready(function () {
+
+          $.ajax(
+              {
+                  url: url,
+                  type: 'GET',
+                  success: function (data) {
+                      $("#post").append(data);
+                  }
+
+              })
+      })
+
+      number = number + 6;
+
+      $(window).scroll(function () {
+          let url = 'posts.php?number=' + number + '&user=' + user;
+          if ($(window).scrollTop() + $(window).height() > $(document).height()-100) {
+              $.ajax(
+                  {
+                      url: url,
+                      type: 'GET',
+                      success: function (data) {
+                          $("#post").append(data);
+                      }
+                  })
+
+              number = number + 6; }
+      })
+
+  }
+
+
+
+</script>
+
 </body>
 </html>

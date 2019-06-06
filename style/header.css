@@ -3,14 +3,17 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    outline: none;
 }
 a
 {
     text-decoration: none;
+    outline: none;
     color: #ffffff;
+    outline: none;
 }
 
-
+:focus{outline: none}
 
 
 
@@ -50,6 +53,7 @@ a
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
+    outline: none;
 }
 /***********************************************When Logged in*************************************/
 #menu2
@@ -66,6 +70,7 @@ a
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
     width: 15%;
+    outline: none;
 }
 #perfil
 {
@@ -74,6 +79,7 @@ a
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
     width: 15%;
+    outline: none;
 }
 #sair
 {
@@ -82,12 +88,15 @@ a
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
     width: 15%;
+    outline: none;
 }
 #search input
 {
     font-family: 'Press Start 2P', cursive;
     padding: 1vh;
     border-radius:10px;
-    border:none;
+    border: none;
     text-align: center;
+    outline: none;
+
 }

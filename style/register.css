@@ -9,8 +9,8 @@
                         ". . . sign sign sign sign sign . . ."
                         ". . . sign sign sign sign sign . . .";
 }
-#signup_flex  div{padding:3%;}
-
+#signup_flex  div{padding:3%;outline: none;}
+:focus{outline: none}
 #signup
 {   grid-area: sign;
     background: #FF5B4F;
@@ -19,7 +19,10 @@
     width: 80%;
     height: 80%;
     margin-top: 10%;
-    border-radius: 15px;}
+    border-radius: 15px;
+    outline: none;
+    ;}
+
 
 
 
@@ -31,6 +34,9 @@ input
     width: 80%;
     padding: 1vh;
     border-radius: 8px;
+    outline: none;
+    border: none;
+
 
 }
 #signup-but
@@ -43,5 +49,6 @@ input
     margin-left: 30%;
 
     margin-bottom:      0px;
+    outline: none;
 
 }
