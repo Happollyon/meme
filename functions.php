@@ -4,11 +4,11 @@ $dbname = "meme";
 $dbuser = "root";
 $dbpass="" ;
 
-$connection = new mysqli($dbhost, $dbuser,$dbpass , $dbname);
-if($connection->error) die($connection->connect_error);
+$connection = new mysqli($dbhost, $dbuser,$dbpass , $dbname);  //prepares a connection
+if($connection->error) die($connection->connect_error);         // if there is an error
 
 
-function queryMysql($query)
+function queryMysql($query)   // function to query the database
 {
     global $connection;
     $result = $connection->query($query);
@@ -16,7 +16,7 @@ function queryMysql($query)
     return $result;
 }
 
-function destroSection()
+function destroSection() // end section
 {
     $_SESSION=array();
     if (session_id() != "" || isset($_COOKIE[session_name()]))
@@ -24,7 +24,7 @@ function destroSection()
     session_destroy();
 }
 
-function sanit($var)
+function sanit($var) // sanitizes data that enters the database
 {
     global $connection;
     $var =strip_tags($var);

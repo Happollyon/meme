@@ -23,12 +23,12 @@ if(isset($_POST['user'])&& isset($_POST['password'])) {
 <link rel="stylesheet" href="style/login.css">
 <div id="loginform">
 
-<form action="login.php" method="post">
+<form action="login.php"autocomplete='off'  method="post">
     <div id="signin_flex">
         <div>Usuario</div>
-    <input type="text" placeholder="Entre seu usuario" name="user">
+    <input type="text" autocomplete='off' placeholder="Entre seu usuario" name="user">
         <div>Senha</div>
-    <input type="password" placeholder="Entre sua senha" name="password">
+    <input type="password" autocomplete='off'  placeholder="Entre sua senha" name="password">
    <div id="signup-but"><input type="submit" value="Login"></div>
     </div>
 </form>

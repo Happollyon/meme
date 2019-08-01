@@ -1,0 +1,69 @@
+// create profile page
+    *can make post[done]
+    *like ajax and load post ajax [Done]
+    *only posts from user [DONE]
+    *IF own profile
+        can change profile picture [done]
+        can make posts[done]
+    *IF not own profile
+        can follow or unfollow [ajax] [DONE]
+
+
+//error handeling
+    *when signing up if is empty mkdir doesnt work shows error
+
+
+// main page
+    *include comments
+    *size and treat files uploaded
+    *time function
+
+// hot
+ *show memes with more likes
+    over hour
+    day
+    week
+
+// phone design
+
+
+
+//user experience
+   (posts)
+    *check file is allowed [DO on tues]
+    * check amount of chars entered [DONE]
+   (register)
+        *check size of user name [DONE]
+        *check illegal chars    [DONE]
+        *check if email exists [DONE]
+        *check if user exists [DONE]
+
+
+
+// style
+profile.css
+  user info [done]
+  body when no posts [done]
+
+register.css
+    autocomplet[done]
+loogin.css
+    autocomplete [done]
+
+
+
+
+
+
+// what to do friday 02/07
+    comment code from index file
+    updadte github
+
+
+//comments
+
+    delete comments
+    comment publication
+    style
+
+

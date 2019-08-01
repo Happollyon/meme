@@ -15,7 +15,7 @@ if(isset($_SESSION['user']))
 <head>
     <title>meme.com.br</title>
    <link rel="stylesheet" href="style/header.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Montserrat|Press+Start+2P&display=swap" rel="stylesheet">
 
 </head>
 
@@ -29,7 +29,7 @@ if(!$loggedin)
 
 
                 <div id='memes'>
-                meme
+                <a href='index.php'><img src='images/meme3.png'></a>
                 </div>
             <div id='menu1'>
 
@@ -52,21 +52,21 @@ else{
 
 
                 <div id='memes'>
-                meme
+                <img src='images/meme3.png'>
                 </div>
         <div id='menu2'>
 
             <div id='search'>
             
-            <form>
-            <input type='search' placeholder='procurar' name='procurar'>
+            <form autocomplete='off'>
+            <input autocomplete='off' type='search' placeholder='procurar' name='procurar'>
             </form>
             
             </div>
             <div id='hot'> <a>Hot </a> </div>
 
 
-            <div id='perfil'><a>Perfil</a></div>
+            <div id='perfil'><a href='main.php'>main</a></div>
             <div id='sair'><a href='exit.php'>Sair</a></div>
         </div>
 </div>

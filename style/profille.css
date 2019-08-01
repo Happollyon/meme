@@ -1,25 +1,45 @@
-#cont {
+
+
+#cont{
+
     height: auto;
+    min-height: 1vh;
     background: #F3F3F3;
     display: grid;
-
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: minmax(118px, 119px) 1 auto 1fr 1fr;
-    grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu" "perfilbox perfilbox perfilbox Poster Poster Poster Poster Poster Poster Poster ." ". . . posts posts posts posts posts posts posts ." ". . . posts posts posts posts posts posts posts .";
+    grid-template-rows: minmax(118px, 119px) 1auto 1fr 1fr;
+    grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
+    "perfilbox perfilbox perfilbox posts posts posts posts posts posts posts ."
+    ". . . posts posts posts posts posts posts posts ."
+    ". . . posts posts posts posts posts posts posts .";
+
     grid-gap: 10px;
 
 }
 #perfil-box
 {
+    height: 30vh;
     grid-area: perfilbox;
     background: #ffffff;
     border-radius: 15px;
     font-family: 'Montserrat', sans-serif;
     max-height: 400px;
     outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
+#inf
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 input[type="text" i]
-{   margin: 1vh;
+{
+    margin: 1vh;
     width: 90%;
     padding: 3vh;
     font-family: 'Press Start 2P', cursive;
@@ -27,8 +47,6 @@ input[type="text" i]
     border-radius: 15px;
     border:none;
     outline: none;
-
-
 }
 
 input[type="submit" ]
@@ -37,7 +55,7 @@ input[type="submit" ]
     font-family: 'Press Start 2P', cursive;
     color: white;
     padding: 1vh;
-    width: auto;
+    width: 13%;
     border: none;
     border-radius: 15px;
     background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
@@ -51,10 +69,8 @@ input[type="submit" ]
     justify-items: center;
     background: rgba(255, 91, 79, 0.1);
     border-radius: 15px;
-    outline: none;
 }
-#user
-{
+#user{
     font-family: 'Press Start 2P', cursive;
     display: flex;
     flex-direction: row;
@@ -77,13 +93,61 @@ input[type="submit" ]
     background: #ffffff;
     border-radius: 15px;
     font-family: 'Montserrat', sans-serif;
-
 }
 button
 {
     background: none;
     border:none;
     outline: none;
+}
+
+#unfollow:hover
+{
+    margin: 1vh;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 1vh;
+
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #b31d17 0%, #ff09f7 100%);
+    outline: none;
+}
+#unfollow
+{
+    margin: 1vh;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 1vh;
+
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    outline: none;
+}
+#follow:hover
+{
+    margin: 1vh;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 1vh;
+    border: solid #36FF89;
+    border: none;
+    border-radius: 15px;
+    background: #36FF89;
+    outline: none;
+}
+#follow
+{   margin: 1vh;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 1vh;
+
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    outline: none;
+
 }
 #content
 {
@@ -111,46 +175,7 @@ button
     height: 50px;
     border-radius: 50%;
 }
-#but
+body
 {
-    margin: 1vh;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    padding: 1vh;
-    width: 50%;
-    border: none;
-    border-radius: 15px;
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
-    outline: none;
-
-}
-#numb
-{
-    color: #ff0042;
-}
-
-.blur
-{
-    filter: blur(6px);
-    z-index: 1;
-}
-
-.comment_section
-{
-
-
-
-    background-color: black;
-
-}
-
-#comments
-{   display: flex;
-    flex-direction: column;
-    justify-content: space-betweena;
-    border-bottom: dotted #b4b4b4;
-    background: rgba(235, 225, 249, 0.5);
-    z-index: 10;
-    max-width: 80%;
-    border-radius: 5px;
+    background: #F3F3F3;
 }

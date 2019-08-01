@@ -32,12 +32,14 @@ a
 {   width: 25%;
     display: flex;
     flex-direction: row;
+    outline: none;
     justify-content: space-between;
 }
 #memes
 {   font-family: 'Press Start 2P', cursive;
     color: #FF5B4F;
     vertical-align: middle;
+    outline: none;
     font-size: 2em;
 }
 #log
@@ -61,11 +63,31 @@ a
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    outline: none;
+}
+#hot:hover
 
+{   background:  #36FF89;
+    border: solid white;
+    padding: 1vh;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', cursive;
+    width: 15%;
+    outline: none;
 }
 #hot
 
 {   background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    padding: 1vh;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', cursive;
+    width: 15%;
+    outline: none;
+}
+#perfil:hover
+{
+    background:  #36FF89;
+    border: solid white;
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -80,6 +102,16 @@ a
     font-family: 'Press Start 2P', cursive;
     width: 15%;
     outline: none;
+}
+   #sair:hover
+   {background: #FF5B4F;
+    padding: 1vh;
+       border: solid white;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', cursive;
+    width: 15%;
+    outline: none;
+
 }
 #sair
 {
@@ -98,5 +130,16 @@ a
     border: none;
     text-align: center;
     outline: none;
+
+}
+:focus
+{
+    outline: none;
+}
+#error
+{
+    color: #b31d17;
+    outline: #36FF89;
+    font-family: 'Merriweather Sans', sans-serif;
 
 }

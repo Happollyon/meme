@@ -21,7 +21,10 @@
     margin-top: 10%;
     border-radius: 15px;
     outline: none;
-    ;}
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    }
 
 
 
@@ -36,8 +39,6 @@ input
     border-radius: 8px;
     outline: none;
     border: none;
-
-
 }
 #signup-but
 {

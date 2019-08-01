@@ -3,26 +3,59 @@ require_once 'header.php';
 include_once 'likes.php';
 include_once 'deletepost.php';
 
+
 if(($_SESSION['user']=="") || $_SESSION['password']=="" )// checks if there is a session
 {
     $loggedin= FALSE; // if not, variable is turned to false
     header('location:http://localhost/meme/login.php');// and user directed to login page
 }
-if(isset($_POST['text']) && $_POST['text']!="") // check if something has been posted and its not empty
-{   $user = $_SESSION['user'];
+
+// ******* posting section of main page ***********
+
+// post text only
+if(isset($_POST['text']) && $_POST['text']!="" && $_FILES['image']['type'] == "")  // checks if text is set and files empty
+{   $user = sanit($_SESSION['user']) ;
     $text = sanit($_POST['text']);
-    $query= "INSERT INTO posts(text,user) values('$text','$user')"; //inserts into table
+
+    $query= "INSERT INTO posts(text,user) values('$text','$user')"; //inserts text and user into table
     queryMysql($query);
+
+}
+// post file only
+if(isset($_FILES['image']['type'])&& $_FILES['image']['type']!="" && $_POST['text'] == "") //checks if text is empty and files set
+{
+
+    $user = sanit($_SESSION['user']) ;
+    $file_id = uniqid("$user", TRUE); // creates a unique file id -> prefixed with user(16) id(23) .jpg
+    $fileName = "user_data/".$user."/".$file_id.".jpg";
+    move_uploaded_file($_FILES['image']['tmp_name'],  $fileName); // saves the file in user_data/userfolder/filed.jpg
+    queryMysql("INSERT INTO posts(user,file_id) values('$user','$file_id')");
+}
+//file and text
+if(isset($_POST['text']) && $_POST['text']!="" && isset($_FILES['image']['type']) && $_FILES['image']['type'] != "")  // checks if both are set
+{   $user = sanit($_SESSION['user']);
+    $text = sanit($_POST['text']);
+    $file_id = uniqid("$user", TRUE);// creates a unique file id -> prefixed with user(16) id(23) .jpg
+    $fileName = "user_data/".$user."/".$file_id.".jpg";
+    move_uploaded_file($_FILES['image']['tmp_name'],  $fileName); // saves the file in user_data/userfolder/filed.jpg
+
+    $query= "INSERT INTO posts(text,user,file_id) values('$text','$user','$file_id')"; //inserts text, user and file into table
+    queryMysql($query);
+
 }
 
 ?>
 
+    <!-- HTML here -->
+
 <link rel="stylesheet" href="style/main.css" >
+
 <div id="poster">
-    <form method="post" action="">
+    <form method="post"autocomplete='off' action="" enctype="multipart/form-data">
 
-            <input type="text" placeholder="Me faca rir" name="text">
-
+            <input autocomplete='off' id='texto' onkeyup="counter()" type="text" placeholder="Me faca rir" name="text">
+            <input autocomplete='off' type="file" size="14" name="image">
+            <div id="numb"></div>
         <div id="postar_btn"><input type="submit" value="Postar"></div>
 
 </form>
@@ -30,6 +63,13 @@ if(isset($_POST['text']) && $_POST['text']!="") // check if something has been p
 </div>
 
 <?php
+if(file_exists("user_data/$user/$user.jpg")) // checks if user has profile pic
+{
+    $path_profile = "user_data/$user/$user.jpg ";  // saves path to pic in var
+} else {
+    $path_profile = "images/avatars-icon-16.jpg"; // or uses a avatar
+}
+
 $result=queryMysql("SELECT post_id FROM posts WHERE user='$user'") ; // selects all posts form user
 $num = $result->num_rows; // number of rows
 
@@ -39,7 +79,7 @@ $num2= $result2->num_rows;// selects numbers of rows  of people user is followin
 $result3 = queryMysql("SELECT user FROM friends WHERE following='$user'");// select people following the user
 $num3 = $result3->num_rows;// selects numbers of rows of people following user
 
-echo "<div id='perfil-box'>".$user."  memes: ".$num."<br><br>" //shows the name of the user and the number of posts
+echo "<div id='perfil-box'><a href='profile.php?profile=$user&user=$user'><img src='$path_profile' id='avatar'> </a>".$user."  memes: ".$num."<br><br>" //shows the name of the user and the number of posts
         ."Seguindo: ".$num2."" // number of people following
         ."  Seguidores:".$num3."<br><br>" // number of followers
 ."</div>";
@@ -56,57 +96,148 @@ echo
 </div>
 
 <script>
-  function like(like, user, post_id) {
+    // like and dislike ajax using jquery
+  function like(like, user, post_id)        //function on click with user, post id and like value parammters
+  {
 
-       let urrl = 'likes.php?like='+like+'&user='+user+'&post_id='+post_id
-        $.ajax({
+       let urrl = 'likes.php?like='+like+'&user='+user+'&post_id='+post_id   // creates the url GET
+       $.ajax({    // jquery ajax fuction
             url: urrl,
             type: 'GET',
 
 
-            success: function(data)
-            {   var data = JSON.parse(data)
-                let post_like  = data.post_id;
-                $("#"+ post_like).text(data.likes);
-                $("#D" +post_like).text(data.dislikes);
+            success: function(data) // on success it receives a json file
+            {   var data = JSON.parse(data)  // parses it
+                let post_like  = data.post_id; // each post has a div id = the post id
+                $("#"+ post_like).text(data.likes); // access and updates numb o likes by div =id
+                $("#D" +post_like).text(data.dislikes); // access and updates numb o dislikes by div =id
             }
-        })}
+        })
+  }
+    function like_comment(like, user, comment_id)        //function on click with user, post id and like value parammters
+    {
 
-  let number =0;
+        let urrl = 'like_comment.php?like='+like+'&user='+user+'&post_id='+comment_id   // creates the url GET
+        $.ajax({    // jquery ajax fuction
+            url: urrl,
+            type: 'GET',
+
+
+            success: function(data) // on success it receives a json file
+            {   var data = JSON.parse(data)  // parses it
+                let comment_like  = data.post_id; // each post has a div id = the post id
+                $("#"+ comment_like).text(data.likes); // access and updates numb o likes by div =id
+                $("#D"+comment_like).text(data.dislikes); // access and updates numb o dislikes by div =id
+            }
+        })
+    }
+
+
+        // Ajax loading posts
+  let number =0; //number of posts to be ignored so isn't loaded again
   {
-      let user = $("#post").attr('class')
-      let url = 'posts.php?number=' + number + '&user=' + user;
-      $(document).ready(function () {
+      let user = $("#post").attr('class') //user value taken from class
+      let url = 'posts.php?number=' + number + '&user=' + user;  // creates url
+      $(document).ready(function ()
+      { // ajax is called when page is ready
 
           $.ajax(
               {
                   url: url,
-                  type: 'GET',
-                  success: function (data) {
-                      $("#post").append(data);
+                  type: 'GET',  //get
+                  success: function (data) // on success of the call
+                  {
+                      $("#post").append(data); // appends 6 posts
                   }
 
               })
       })
 
-      number = number + 6;
+      number = number + 6; //number of posts to be ignored so isn't loaded again is increased
 
-      $(window).scroll(function () {
-          let url = 'posts.php?number=' + number + '&user=' + user;
-          if ($(window).scrollTop() + $(window).height() > $(document).height()-100) {
+
+           // ajax when page is scrolled to almost end of page
+           $(window).scroll(function ()
+      {
+          let url = 'posts.php?number=' + number + '&user=' + user;  // url to be passed is created
+          if ($(window).scrollTop() + $(window).height() > $(document).height()-100)
+          {
               $.ajax(
                   {
                       url: url,
                       type: 'GET',
                       success: function (data) {
-                          $("#post").append(data);
+                          $("#post").append(data); // response is appended to page
                       }
                   })
 
-              number = number + 6; }
+              number = number + 6; //number of posts to be ignored so isn't loaded again is increased
+          }
       })
 
   }
+
+ function counter()
+ {
+    let num_char = $('#texto').val()
+     if(num_char.length<600)
+     {
+         $('#numb').text(num_char.length)
+     }else
+     {
+         $('#numb').text('limite: 600')
+     }
+
+ }
+
+
+ function open_coments(post_id,user)
+ {   let number = 0;
+     let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number;
+     $.ajax(
+         {
+             url:url,
+             type:'GET',
+             success: function (data)
+            {
+                $('.'+post_id).append(data);
+            }
+        }
+     )
+     let comments_left=0;
+    number = number + 6;
+     $(this).on('scroll', function ()
+     {
+         let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number; // url to be passed is created
+         if ($('.'+post_id).scrollTop() + $('.'+ post_id).innerHeight()>= $('.'+ post_id)[0].scrollHeight)
+         {
+             if(comments_left == 1)
+             {
+                 return;
+             }else
+             {
+
+
+             $.ajax(
+                 {
+                     url: url,
+                     type: 'GET',
+                     success: function (data) {
+                         $('.'+post_id).append(data2); // response is appended to page
+                       if (data=='')
+                       {
+                           comments_left = 1;
+                       }
+                     }
+
+                 }) }
+
+             number = number + 6; //number of posts to be ignored so isn't loaded again is increased
+         }
+
+     })
+
+ }
 
 
 
