@@ -56,7 +56,7 @@ loogin.css
 
 
 // what to do friday 02/07
-    comment code from index file
+    comment code from main file
     updadte github
 
 

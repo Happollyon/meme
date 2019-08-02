@@ -125,9 +125,9 @@ echo
 
             success: function(data) // on success it receives a json file
             {   var data = JSON.parse(data)  // parses it
-                let comment_like  = data.post_id; // each post has a div id = the post id
-                $("#"+ comment_like).text(data.likes); // access and updates numb o likes by div =id
-                $("#D"+comment_like).text(data.dislikes); // access and updates numb o dislikes by div =id
+                let comment_like  = data.post_id; // each comment has a div class = the post id
+                $("#"+ comment_like).text(data.likes); // access and updates numb o likes by div =class
+                $("#D"+comment_like).text(data.dislikes); // access and updates numb o dislikes by div =class
             }
         })
     }
@@ -191,27 +191,30 @@ echo
  }
 
 
- function open_coments(post_id,user)
- {   let number = 0;
-     let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number;
+
+ // when post clicked this function makes an ajax call to database to retrieve comments
+ function open_coments(post_id,user) // passes the post id and the user viewing the post
+ {   let number = 0; // number of posts loaded
+     let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number;  // url for ajax call
      $.ajax(
          {
              url:url,
-             type:'GET',
-             success: function (data)
+             type:'GET',  // type of request
+             success: function (data)// on success
             {
-                $('.'+post_id).append(data);
+                $('.'+post_id).append(data); //response (comments) is appended to the post
             }
         }
      )
-     let comments_left=0;
-    number = number + 6;
-     $(this).on('scroll', function ()
+
+     let comments_left=0;  //variable used to stop request
+    number = number + 6; // number of posts loaded
+     $(this).on('scroll', function () // every time page is scrolled function is called
      {
          let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number; // url to be passed is created
-         if ($('.'+post_id).scrollTop() + $('.'+ post_id).innerHeight()>= $('.'+ post_id)[0].scrollHeight)
+         if ($('.'+post_id).scrollTop() + $('.'+ post_id).innerHeight()>= $('.'+ post_id)[0].scrollHeight) // if pixels scrolled + post hight > hte
          {
-             if(comments_left == 1)
+             if(comments_left == 1) // if there is no more comments to be loaded
              {
                  return;
              }else
@@ -223,7 +226,7 @@ echo
                      url: url,
                      type: 'GET',
                      success: function (data) {
-                         $('.'+post_id).append(data2); // response is appended to page
+                         $('.'+post_id).append(data2); // response is appended to post
                        if (data=='')
                        {
                            comments_left = 1;

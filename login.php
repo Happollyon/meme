@@ -1,13 +1,16 @@
 <?php
 require_once 'header.php';
 
-if(isset($_POST['user'])&& isset($_POST['password'])) {
-    $user = sanit($_POST['user']);
-    $pass = sanit($_POST['password']);
-    $pass = hash('ripemd160', $pass);
+if(isset($_POST['user'])&& isset($_POST['password'])) // checks if user and password are set
+{
+    $user = sanit($_POST['user']);  // sanitizes it
+    $pass = sanit($_POST['password']); // sanitizes it
+    $pass = hash('ripemd160', $pass); // sanitizes it
 
-    $result = queryMysql("SELECT * FROM member WHERE username='$user' AND password='$pass'");
-    if ($result->num_rows) {
+    $result = queryMysql("SELECT * FROM member WHERE username='$user' AND password='$pass'"); //checks values against database
+    if ($result->num_rows)  // if found
+    {
+        // creates section
         $_SESSION['user'] = $user;
         $_SESSION['password'] = $pass;
 

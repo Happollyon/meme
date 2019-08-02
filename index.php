@@ -45,39 +45,39 @@ require_once 'header.php';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script>
 
-    function passcheck()
-    {let pass =  $('#pass').val();
-        let pasCheck= $('#passCheck').val();
-        if(pass!=pasCheck)
+    function passcheck() // function to check that password matches
+    {let pass =  $('#pass').val();  // gets value of pass
+        let pasCheck= $('#passCheck').val(); // gess value of passcheck value
+        if(pass!=pasCheck)  // both values are different
         {
-            $('#passCheck').css({'background-color':'#ff358e','border':'solid','border-color':'#ffffff'})
-            $('input#signup-but').attr('disabled','disabled')
+            $('#passCheck').css({'background-color':'#ff358e','border':'solid','border-color':'#ffffff'})  // changes style
+            $('input#signup-but').attr('disabled','disabled') // disables submit button
         }
         else
         {
             $('#passCheck').css({'background-color':'#6cff7a','border':'solid','border-color':'#ffffff'})
-            $('input#signup-but').removeAttr('disabled')
+            $('input#signup-but').removeAttr('disabled') // enables submit button
 
         }
 
 
     }
 
-
+    // this function makes an ajax call to the database to check if there is a user using user name
     function checkUser(user)
     {
         let ajaxRequest;
         ajaxRequest = new   XMLHttpRequest();
         ajaxRequest.onreadystatechange = function ()
         { if(ajaxRequest.readyState == 4)
-        { let ajaxDisplay = document.getElementById("error") ;
-            ajaxDisplay.innerHTML =ajaxRequest.responseText;
-            if(ajaxRequest.responseText !="")
+        { let ajaxDisplay = document.getElementById("error") ; // creates an object
+            ajaxDisplay.innerHTML =ajaxRequest.responseText;  // response is placed in object
+            if(ajaxRequest.responseText !="") // if there a user
             {
-                $('input#signup-but').attr('disabled','disabled')
+                $('input#signup-but').attr('disabled','disabled') // disables button
             }else
             {
-                $('input#signup-but').removeAttr('disabled')
+                $('input#signup-but').removeAttr('disabled')// enables button
             }
         }
 
@@ -88,22 +88,24 @@ require_once 'header.php';
         ajaxRequest.send(null);
     }
 
-    function isEmail(email)
+    function isEmail(email) // this function checks if value is an email
     {
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         return regex.test(email.value);
     }
 
+
+    // this function makes an ajax call to check if email is available
     function checkmail(email)
     {   let result = isEmail(email)
-        if (!result)
+        if (!result) // if false
         {
-            $('#email').css({'background-color':'#ff358e','border':'solid','border-color':'#ffffff'})
-            $('input#signup-but').attr('disabled','disabled')
+            $('#email').css({'background-color':'#ff358e','border':'solid','border-color':'#ffffff'}) // style
+            $('input#signup-but').attr('disabled','disabled') // button disabled
         }else
         {
-            $('#email').css({'background-color':'#34ff8d','border':'solid','border-color':'#ffffff'})
-            $('input#signup-but').removeAttr('disabled')
+            $('#email').css({'background-color':'#34ff8d','border':'solid','border-color':'#ffffff'}) // style
+            $('input#signup-but').removeAttr('disabled') // button enabled
         }
         let ajaxRequest;
         ajaxRequest = new   XMLHttpRequest();
@@ -113,10 +115,10 @@ require_once 'header.php';
             ajaxDisplay.innerHTML =ajaxRequest.responseText;
             if(ajaxRequest.responseText !="")
             {
-                $('input#signup-but').attr('disabled','disabled')
+                $('input#signup-but').attr('disabled','disabled') // button disabled
             }else
             {
-                $('input#signup-but').removeAttr('disabled')
+                $('input#signup-but').removeAttr('disabled') // button enabled
             }
         }
 
