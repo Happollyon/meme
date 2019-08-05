@@ -56,13 +56,13 @@ loogin.css
 
 
 // what to do friday 02/07
-    comment code from main file
-    updadte github
-
+    finish commnets
+    run
+    study JS
 
 //comments
 
-    delete comments
+    delete comments using ajax
     comment publication
     style
 

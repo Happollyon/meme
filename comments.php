@@ -1,10 +1,17 @@
 <?php
 require_once 'functions.php';
-$limit  = 6; // number of comments to load at a time
+$limit  = sanit($_GET['limit']); // number of comments to load at a time
 $previous_limit = sanit($_GET['number']); // number of comments to offset
 // receive a request passing user, post_id, number of post offset
 
+if(isset($_GET['user'])&&isset($_GET['post_id'])&&isset($_GET['comment']))
+{
+    $user= sanit($_GET['user']);
+    $post_id = sanit($_GET['post_id']);
+    $comment_into_dataBase = sanit($_GET['comment']);
+    queryMysql("INSERT INTO comments(comment_text,post_id,user_comment) VALUES('$comment_into_dataBase','$post_id','$user')");
 
+}
 if(isset($_GET['user']) && isset($_GET['post_id']))
 {
     $user = sanit($_GET['user']); // gets from the request the user
@@ -13,10 +20,15 @@ if(isset($_GET['user']) && isset($_GET['post_id']))
     $result = queryMysql($query); // gets data from comments
     $num = $result->num_rows;
 
+    // selecting user who made the post
+    $post_owner = queryMysql("SELECT user FROM posts WHERE post_id = '$post_id'");  // selecting user from table post.
+    $post_owner = $post_owner->fetch_array(MYSQLI_ASSOC);
+    $post_owner = $post_owner['user'];
+
 
     for($i=0; $i<$num; $i++)
     {   $user_encrypted = encrypt($user);       // encrypts the user
-        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $row =  $result->fetch_array(MYSQLI_ASSOC);
         $comment = sanit($row['comment_text']);         // holds the text
         $user_comment= sanit($row['user_comment']);         // user who commented
         $comment_id = $row['comment_id'];            // id of comment
@@ -49,17 +61,32 @@ if(isset($_GET['user']) && isset($_GET['post_id']))
 
         // return comments with likes dislikes [done]
 
-        // fi user is who commented he can delete it
-        // who make teh post can delete comments
+        // fi user is who commented he can delete it [done]
+        // who make teh post can delete comments [done]
         // comments have to be called using limit [partially done]
 
 
 
-
-        echo"<div id='comments' class='$comment_id'><div id='user'><img src='$path_profile' id='avatar'>$user_comment</div><div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
+        if($user == $user_comment) // who makes the comment can delete his comment
+        {
+            echo "<div class='comments' id='$comment_id'><div id='user'><img onclick='delete_comment(\"$comment_id\")' src='images/icons8-delete-24.png'><img src='$path_profile' id='avatar'>$user_comment</div><div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
             <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$comment_id'> $likes 
             </div>	<button onclick='like_comment(\"$deslike_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$comment_id'>  $deslikes 
             </div></div></button></div></div>";
+        }elseif($user == $post_owner) // who made the post can delete any comment
+        {
+            echo "<div id='comments' class='$comment_id'><div id='user'><img src='images/icons8-delete-24.png'><img src='$path_profile' id='avatar'>$user_comment</div>delete<div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
+            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$comment_id'> $likes 
+            </div>	<button onclick='like_comment(\"$deslike_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$comment_id'>  $deslikes 
+            </div></div></button></div></div>";
+        }else// cant delete comments
+        {
+            echo "<div id='comments' class='$comment_id'><div id='user'><img src='$path_profile' id='avatar'>$user_comment</div><div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
+            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$comment_id'> $likes 
+            </div>	<button onclick='like_comment(\"$deslike_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$comment_id'>  $deslikes 
+            </div></div></button></div></div>";
+        }
+
 
     }
 }

@@ -190,12 +190,30 @@ echo
 
  }
 
+ // click once--> shows comments and poster
+    //click again poster and comments disapears
 
 
  // when post clicked this function makes an ajax call to database to retrieve comments
+    let  click = 0;
  function open_coments(post_id,user) // passes the post id and the user viewing the post
- {   let number = 0; // number of posts loaded
-     let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number;  // url for ajax call
+ {
+     if (click==1)
+     {
+         $('.comments').css('display','none');
+         click=0
+     }
+     click=1;
+
+
+     let form = // this variable holds the form used to make new comments
+
+         "    <input id='comment"+post_id+"' autocomplete=\"off\" type=\"text\" name=\"comment\" placeholder=\"comente esse meme\" maxlength=\"100\">\n" +
+         "    <input type='submit' onclick='make_comment("+post_id+","+ "\""+user+"\""+")'value='commentar'>\n"
+
+     $('.'+post_id).append(form); // when the comment section opens the form is inserted
+     let number = 0; // number of posts loaded
+     let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number+"&limit=6";  // url for ajax call
      $.ajax(
          {
              url:url,
@@ -211,7 +229,7 @@ echo
     number = number + 6; // number of posts loaded
      $(this).on('scroll', function () // every time page is scrolled function is called
      {
-         let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number; // url to be passed is created
+         let url = 'comments.php?post_id=' +post_id+'&user='+user +'&number='+number+"&limit=6"; // url to be passed is created
          if ($('.'+post_id).scrollTop() + $('.'+ post_id).innerHeight()>= $('.'+ post_id)[0].scrollHeight) // if pixels scrolled + post hight > hte
          {
              if(comments_left == 1) // if there is no more comments to be loaded
@@ -226,7 +244,7 @@ echo
                      url: url,
                      type: 'GET',
                      success: function (data) {
-                         $('.'+post_id).append(data2); // response is appended to post
+                         $('.'+post_id).append(data); // response is appended to post
                        if (data=='')
                        {
                            comments_left = 1;
@@ -242,6 +260,61 @@ echo
 
  }
 
+
+    function delete_post(post_id) // function used to delete posts using ajax
+    {
+        let url = "deletepost.php?delete=" +post_id; //url
+
+        // ajax call
+        $.ajax( {
+            url: url,
+            type: 'GET',
+            success: function(data)
+            {
+                $('.' + post_id).css({'display':'none'}); // on success posts disapears
+            }
+        })
+
+    }
+function delete_comment(comment_id) // function used to delete comments using ajax
+{
+    let url = "delete_comment.php?delete_comment=" +comment_id; //url
+
+    $.ajax(  // ajax call
+        {
+        url: url,
+        type: 'GET',
+        success: function()
+        {
+            $('#' + comment_id).css({'display':'none'}); // on success comment disapears
+        }
+    })
+
+}
+function make_comment(post_id,user) // function used to make camment using ajax
+{  let comment = $('#comment'+post_id).val(); // takes value of input "the comment"
+    $('.comment').val(''); // sets input back to blank
+    let url = "comments.php?post_id=" +post_id+ "&user=" +user+ "&comment=" +comment+"&limit=1&number=0"; // creates a url
+
+    $.ajax( // makes ajax call
+        {
+            url: url,
+            type: 'GET',
+            success: function(data)
+            {
+
+               if($('div').is('.comments')) // if post already has comments
+               {
+                   $(data).insertBefore('.comments'); // inserts it before 1st comment
+               }else
+               {
+                   $('.' + post_id).append(data); // if not appends it post
+               }
+            }
+        })
+
+
+}
 
 
 </script>
