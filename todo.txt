@@ -14,7 +14,7 @@
 
 
 // main page
-    *include comments
+    *include comments [done]
     *size and treat files uploaded
     *time function
 
@@ -57,13 +57,9 @@ loogin.css
 
 // what to do friday 02/07
     finish commnets
-    run
-    study JS
 
 //comments
-
-    delete comments using ajax
-    comment publication
+ loading 6 a time
     style
 
 

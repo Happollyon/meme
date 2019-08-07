@@ -114,6 +114,8 @@ echo
             }
         })
   }
+
+
     function like_comment(like, user, comment_id)        //function on click with user, post id and like value parammters
     {
 
@@ -177,7 +179,7 @@ echo
 
   }
 
- function counter()
+ function counter() // this funtion counts the number of chars the post has
  {
     let num_char = $('#texto').val()
      if(num_char.length<600)
@@ -190,26 +192,34 @@ echo
 
  }
 
- // click once--> shows comments and poster
-    //click again poster and comments disapears
+
+
+
+
 
 
  // when post clicked this function makes an ajax call to database to retrieve comments
     let  click = 0;
+
+
  function open_coments(post_id,user) // passes the post id and the user viewing the post
  {
-     if (click==1)
+
+     if (click==1 ) // if icon has being clicked once
      {
-         $('.comments').css('display','none');
-         click=0
+         $('div').remove('.comments'); //closes
+         $('div').remove('.commenter');//closes
+
+         click=0; // set to zero
+         return ;
+
      }
-     click=1;
 
 
      let form = // this variable holds the form used to make new comments
 
-         "    <input id='comment"+post_id+"' autocomplete=\"off\" type=\"text\" name=\"comment\" placeholder=\"comente esse meme\" maxlength=\"100\">\n" +
-         "    <input type='submit' onclick='make_comment("+post_id+","+ "\""+user+"\""+")'value='commentar'>\n"
+         "   <div class='commenter'> <input id='comment"+post_id+"' autocomplete=\"off\" type=\"text\" name=\"comment\" placeholder=\"comente esse meme\" maxlength=\"100\">\n" +
+         "    <input type='submit' onclick='make_comment("+post_id+","+ "\""+user+"\""+")'value='commentar'><div>\n";
 
      $('.'+post_id).append(form); // when the comment section opens the form is inserted
      let number = 0; // number of posts loaded
@@ -257,7 +267,7 @@ echo
          }
 
      })
-
+ click =1; 
  }
 
 
@@ -269,7 +279,7 @@ echo
         $.ajax( {
             url: url,
             type: 'GET',
-            success: function(data)
+            success: function()
             {
                 $('.' + post_id).css({'display':'none'}); // on success posts disapears
             }
@@ -293,7 +303,7 @@ function delete_comment(comment_id) // function used to delete comments using aj
 }
 function make_comment(post_id,user) // function used to make camment using ajax
 {  let comment = $('#comment'+post_id).val(); // takes value of input "the comment"
-    $('.comment').val(''); // sets input back to blank
+    $('#comment' + post_id).val(''); // sets input back to blank
     let url = "comments.php?post_id=" +post_id+ "&user=" +user+ "&comment=" +comment+"&limit=1&number=0"; // creates a url
 
     $.ajax( // makes ajax call
@@ -305,7 +315,7 @@ function make_comment(post_id,user) // function used to make camment using ajax
 
                if($('div').is('.comments')) // if post already has comments
                {
-                   $(data).insertBefore('.comments'); // inserts it before 1st comment
+                   $(data).insertBefore('.comments:first'); // inserts it before 1st comment
                }else
                {
                    $('.' + post_id).append(data); // if not appends it post
