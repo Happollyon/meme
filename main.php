@@ -54,6 +54,7 @@ if(isset($_POST['text']) && $_POST['text']!="" && isset($_FILES['image']['type']
     <form method="post"autocomplete='off' action="" enctype="multipart/form-data">
 
             <input autocomplete='off' id='texto' onkeyup="counter()" type="text" placeholder="Me faca rir" name="text">
+
             <input autocomplete='off' type="file" size="14" name="image">
             <div id="numb"></div>
         <div id="postar_btn"><input type="submit" value="Postar"></div>
@@ -128,7 +129,7 @@ echo
             success: function(data) // on success it receives a json file
             {   var data = JSON.parse(data)  // parses it
                 let comment_like  = data.post_id; // each comment has a div class = the post id
-                $("#"+ comment_like).text(data.likes); // access and updates numb o likes by div =class
+                $("#L"+comment_like).text(data.likes); // access and updates numb o likes by div =class
                 $("#D"+comment_like).text(data.dislikes); // access and updates numb o dislikes by div =class
             }
         })
@@ -212,14 +213,13 @@ echo
 
          click=0; // set to zero
          return ;
-
      }
 
 
      let form = // this variable holds the form used to make new comments
 
          "   <div class='commenter'> <input id='comment"+post_id+"' autocomplete=\"off\" type=\"text\" name=\"comment\" placeholder=\"comente esse meme\" maxlength=\"100\">\n" +
-         "    <input type='submit' onclick='make_comment("+post_id+","+ "\""+user+"\""+")'value='commentar'><div>\n";
+         "    <input type='submit' onclick='make_comment("+post_id+","+ "\""+user+"\""+")'value='commentar'><div><br>\n";
 
      $('.'+post_id).append(form); // when the comment section opens the form is inserted
      let number = 0; // number of posts loaded

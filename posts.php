@@ -82,7 +82,7 @@ for ($j = 0; $j < $num; $j++) //interacts over every row
             "<img src='$file_path'></div><div id='interaction'> <div id='likes'> <button id='like'  onclick='like(\"$like_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$post_id'>" . $likes .
             "</div>	<button onclick='like(\"$deslike_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$post_id'>" . $deslikes .
             "</div></div><button><img onclick=open_coments(\"$post_id\",\"$user\") src='images/icons8-speech-bubble-40.png'></button></div><div id='data' style='color: #36FF89'>postado: "
-            . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div> </br>";
+            . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div> ";
     } else // otherwise its shown
     {
 
@@ -92,7 +92,7 @@ for ($j = 0; $j < $num; $j++) //interacts over every row
             "</div><div id='content'> " . $row['text'] ."<img src='$file_path'></div> <div id='interaction'><div id='likes'><button onclick='like(\"$like_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button><div id='$post_id'>" . $likes .
             " </div>	<button onclick='like(\"$deslike_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'> <img src='images/icons8-down-arrow-40.png'></button>  <div id='D$post_id'> " . $deslikes .
             "</div></div><button><img  onclick=open_coments(\"$post_id\",\"$user\") src='images/icons8-speech-bubble-40.png'></button></div><div id='data' style='color: #36FF89'>postado: "
-            . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div></br>";
+            . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div>";
     }
 
 }

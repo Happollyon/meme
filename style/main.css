@@ -17,6 +17,7 @@
     font-family: 'Montserrat', sans-serif;
     max-height: 400px;
     outline: none;
+    box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
 }
 input[type="text" i]
 {   margin: 1vh;
@@ -42,11 +43,13 @@ input[type="submit" ]
     border-radius: 15px;
     background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
     outline: none;
+    cursor: pointer;
 }
 #poster
 
 {   grid-area: Poster;
     display: flex;
+    min-height: 33vh;
     flex-direction: column;
     justify-items: center;
     background: rgba(255, 91, 79, 0.1);
@@ -74,9 +77,12 @@ input[type="submit" ]
 #post2{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     background: #ffffff;
     border-radius: 15px;
     font-family: 'Montserrat', sans-serif;
+    box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2vh;
 
 }
 button
@@ -112,7 +118,7 @@ button
     border-radius: 50%;
 }
 #but
-{
+{   cursor: pointer;
     margin: 1vh;
     font-family: 'Press Start 2P', cursive;
     color: white;
@@ -129,28 +135,28 @@ button
     color: #ff0042;
 }
 
-.blur
-{
-    filter: blur(6px);
-    z-index: 1;
-}
-
-.comment_section
+.commenter
 {
 
-
-
-    background-color: black;
-
+    background: #DECFCE;
+    box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    max-width: 90%;
+    margin-bottom: 1vh;
+    margin-left: 2vh;
 }
 
-#comments
-{   display: flex;
-    flex-direction: column;
-    justify-content: space-betweena;
-    border-bottom: dotted #b4b4b4;
-    background: rgba(235, 225, 249, 0.5);
-    z-index: 10;
-    max-width: 80%;
+.comments
+{
+    max-width: 90%;
     border-radius: 5px;
+    background: #F5F0FC;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    margin-bottom: 2vh;
+    margin-left: 2vh;
+}
+button, a
+{
+    cursor: pointer;
 }

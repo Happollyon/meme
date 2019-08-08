@@ -68,7 +68,7 @@ a
 #hot:hover
 
 {   background:  #36FF89;
-    border: solid white;
+
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -87,7 +87,7 @@ a
 #perfil:hover
 {
     background:  #36FF89;
-    border: solid white;
+
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -106,7 +106,6 @@ a
    #sair:hover
    {background: #FF5B4F;
     padding: 1vh;
-       border: solid white;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
     width: 15%;

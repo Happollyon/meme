@@ -70,19 +70,19 @@ if(isset($_GET['user']) && isset($_GET['post_id']))
         if($user == $user_comment) // who makes the comment can delete his comment
         {
             echo "<div class='comments' id='$comment_id'><div id='user'><img onclick='delete_comment(\"$comment_id\")' src='images/icons8-delete-24.png'><img src='$path_profile' id='avatar'>$user_comment</div><div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
-            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$comment_id'> $likes 
+            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='L$comment_id'> $likes 
             </div>	<button onclick='like_comment(\"$deslike_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$comment_id'>  $deslikes 
             </div></div></button></div></div>";
         }elseif($user == $post_owner) // who made the post can delete any comment
         {
-            echo "<div id='comments' class='$comment_id'><div id='user'><img src='images/icons8-delete-24.png'><img src='$path_profile' id='avatar'>$user_comment</div>delete<div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
-            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$comment_id'> $likes 
+            echo "<div class='comments' id='$comment_id'><div id='user'><img src='images/icons8-delete-24.png'><img src='$path_profile' id='avatar'>$user_comment</div>delete<div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
+            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='L$comment_id'> $likes 
             </div>	<button onclick='like_comment(\"$deslike_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$comment_id'>  $deslikes 
             </div></div></button></div></div>";
         }else// cant delete comments
         {
-            echo "<div id='comments' class='$comment_id'><div id='user'><img src='$path_profile' id='avatar'>$user_comment</div><div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
-            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$comment_id'> $likes 
+            echo "<div class='comments' id='$comment_id'><div id='user'><img src='$path_profile' id='avatar'>$user_comment</div><div id='text'>$comment</div> $time dias atras <div id='interaction'> <div id='likes'> 
+            <button id='like'  onclick='like_comment(\"$like_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='L$comment_id'> $likes 
             </div>	<button onclick='like_comment(\"$deslike_encrypted\",\"$user_encrypted\",\"$comment_id_encr\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$comment_id'>  $deslikes 
             </div></div></button></div></div>";
         }

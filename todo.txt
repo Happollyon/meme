@@ -38,25 +38,21 @@
         *check if email exists [DONE]
         *check if user exists [DONE]
 
+   links when hovered need to look clickble
+   when comments opened focus needs to go on them
+
 
 
 // style
-profile.css
-  user info [done]
-  body when no posts [done]
-
-register.css
-    autocomplet[done]
-loogin.css
-    autocomplete [done]
+*poster
+*user information
 
 
 
 
 
 
-// what to do friday 02/07
-    finish commnets
+
 
 //comments
  loading 6 a time
