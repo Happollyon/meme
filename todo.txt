@@ -38,7 +38,7 @@
         *check if email exists [DONE]
         *check if user exists [DONE]
 
-   links when hovered need to look clickble
+   links when hovered need to look clickble[done]
    when comments opened focus needs to go on them
 
 
@@ -51,11 +51,5 @@
 
 
 
-
-
-
-//comments
- loading 6 a time
-    style
 
 

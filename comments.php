@@ -6,7 +6,7 @@ $previous_limit = sanit($_GET['number']); // number of comments to offset
 
 if(isset($_GET['user'])&&isset($_GET['post_id'])&&isset($_GET['comment']))
 {
-    $user= sanit($_GET['user']);
+    $user= sanit(decrypt($_GET['user']));
     $post_id = sanit($_GET['post_id']);
     $comment_into_dataBase = sanit($_GET['comment']);
     queryMysql("INSERT INTO comments(comment_text,post_id,user_comment) VALUES('$comment_into_dataBase','$post_id','$user')");
@@ -14,7 +14,7 @@ if(isset($_GET['user'])&&isset($_GET['post_id'])&&isset($_GET['comment']))
 }
 if(isset($_GET['user']) && isset($_GET['post_id']))
 {
-    $user = sanit($_GET['user']); // gets from the request the user
+    $user = sanit(decrypt($_GET['user'])); // gets from the request the user
     $post_id= sanit($_GET['post_id']);// gets from the request the post id
     $query = "SELECT comment_text, user_comment, comment_id, post_id, DATEDIFF(NOW(),comment_time) from comments WHERE post_id='$post_id'  ORDER BY comment_timE DESC LIMIT $limit OFFSET $previous_limit";
     $result = queryMysql($query); // gets data from comments

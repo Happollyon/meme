@@ -36,7 +36,8 @@ if(isset($_GET['like'])) // checkes if like is set
 
     $likes = $row2['SUM(likee)']; // sum of likes
     $dislikes= $row3['SUM(likee)']; // sum of dislikes
-
+    $post_id_ecrypted = encrypt($post_id);
+    //echo $post_id_ecrypted;
     $myarray = array('likes'=>$likes,'dislikes'=>$dislikes,'post_id'=>$post_id) ; // creates objct
 
    echo json_encode($myarray);// makes json file and sends as response to ajax request

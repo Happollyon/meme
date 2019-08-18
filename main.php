@@ -110,8 +110,9 @@ echo
             success: function(data) // on success it receives a json file
             {   var data = JSON.parse(data)  // parses it
                 let post_like  = data.post_id; // each post has a div id = the post id
-                $("#"+ post_like).text(data.likes); // access and updates numb o likes by div =id
-                $("#D" +post_like).text(data.dislikes); // access and updates numb o dislikes by div =id
+
+                $('#'+post_like).text(data.likes); // access and updates numb o likes by div =id
+                $("#D"+post_like).text(data.dislikes); // access and updates numb o dislikes by div =id
             }
         })
   }

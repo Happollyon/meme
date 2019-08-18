@@ -81,17 +81,17 @@ for ($j = 0; $j < $num; $j++) //interacts over every row
         echo "<div id='post2'  class='$post_id' ><div id='user'> <div id='userAndPic'><a href='profile.php?profile=$post_user&user=$user'><img src='$path_profile' id='avatar'></a>" . $row['user'] . "</div></div> <div id='content'> " . $row['text'] .
             "<img src='$file_path'></div><div id='interaction'> <div id='likes'> <button id='like'  onclick='like(\"$like_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button> <div id='$post_id'>" . $likes .
             "</div>	<button onclick='like(\"$deslike_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'> <img src='images/icons8-down-arrow-40.png'> </button>  <div id='D$post_id'>" . $deslikes .
-            "</div></div><button><img onclick=open_coments(\"$post_id\",\"$user\") src='images/icons8-speech-bubble-40.png'></button></div><div id='data' style='color: #36FF89'>postado: "
+            "</div></div><button><img onclick=open_coments(\"$post_id\",\"$user_encrypted\") src='images/icons8-speech-bubble-40.png'></button></div><div id='data' style='color: #36FF89'>postado: "
             . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div> ";
     } else // otherwise its shown
     {
 
         // everything as above + delete option.
         echo "<div id='post2' class='$post_id'><div id='user'><div id='userAndPic'> <a href='profile.php?profile=$post_user&user=$user'><img src='$path_profile' id='avatar'> </a>" . $row['user'] .
-            "</div> <a onclick='delete_post(\"$post_id\")'><img src='images/icons8-trash-32.png'></a> " .
+            "</div> <a onclick='delete_post(\"$post_id_encrypted\")'><img src='images/icons8-trash-32.png'></a> " .
             "</div><div id='content'> " . $row['text'] ."<img src='$file_path'></div> <div id='interaction'><div id='likes'><button onclick='like(\"$like_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'><img src='images/icons8-down-arrow-40%20-%20Copy.png'></button><div id='$post_id'>" . $likes .
             " </div>	<button onclick='like(\"$deslike_encrypted\",\"$user_encrypted\",\"$post_id_encrypted\")'> <img src='images/icons8-down-arrow-40.png'></button>  <div id='D$post_id'> " . $deslikes .
-            "</div></div><button><img  onclick=open_coments(\"$post_id\",\"$user\") src='images/icons8-speech-bubble-40.png'></button></div><div id='data' style='color: #36FF89'>postado: "
+            "</div></div><button><img  onclick=open_coments(\"$post_id\",\"$user_encrypted\") src='images/icons8-speech-bubble-40.png'></button></div><div id='data' style='color: #36FF89'>postado: "
             . $row['DATEDIFF(NOW(),post_date)'] . "D atras</div></div>";
     }
 
