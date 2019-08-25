@@ -63,7 +63,7 @@ else{
             </form>
             
             </div>
-            <div id='hot'> <a>Hot </a> </div>
+            <div id='hot'> <a href='hot.php'>Hot </a> </div>
 
 
             <div id='perfil'><a href='main.php'>main</a></div>

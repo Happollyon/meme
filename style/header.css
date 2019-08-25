@@ -18,7 +18,7 @@ a
 
 
 #menu
-{   background: #00232E;
+{   background: #272932;
     grid-area: menu;
     display: flex;
     flex-direction: row;
@@ -67,7 +67,7 @@ a
 }
 #hot:hover
 
-{   background:  #36FF89;
+{   background:  #0fbabc;
 
     padding: 1vh;
     border-radius: 10px;
@@ -77,7 +77,7 @@ a
 }
 #hot
 
-{   background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+{   background: #F05D5E;
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -86,7 +86,7 @@ a
 }
 #perfil:hover
 {
-    background:  #36FF89;
+    background:  #0fbabc;
 
     padding: 1vh;
     border-radius: 10px;
@@ -96,7 +96,7 @@ a
 }
 #perfil
 {
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #F05D5E;
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
@@ -104,8 +104,10 @@ a
     outline: none;
 }
    #sair:hover
-   {background: #FF5B4F;
+   {background: #0fbabc;
     padding: 1vh;
+   color: #F05D5E;
+       color: black;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
     width: 15%;
@@ -115,7 +117,7 @@ a
 
 #sair
 {
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #F05D5E;
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
