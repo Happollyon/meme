@@ -53,7 +53,7 @@ if(isset($_FILES['profile_picture'])) {
 }
 ?>
 <?php if($profile_user == $_SESSION['user']){ ?>
-<link rel="stylesheet" href="style/main.css" >
+<link rel="stylesheet" href="style/profille.css" >
 <div id="poster">
     <form autocomplete='off' method="post" action="" enctype="multipart/form-data">
 

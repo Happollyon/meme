@@ -9,10 +9,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: minmax(118px, 119px) 1auto 1fr 1fr;
     grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
-    "perfilbox perfilbox perfilbox posts posts posts posts posts posts posts ."
+    "perfilbox perfilbox perfilbox Poster Poster Poster Poster Poster Poster Poster ."
     ". . . posts posts posts posts posts posts posts ."
     ". . . posts posts posts posts posts posts posts .";
-
     grid-gap: 10px;
 
 }
@@ -58,7 +57,7 @@ input[type="submit" ]
     width: 13%;
     border: none;
     border-radius: 15px;
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #0F7173;
     outline: none;
 }
 #poster
@@ -87,7 +86,7 @@ input[type="submit" ]
 
 }
 
-#post2{
+#post2{ overflow-wrap: break-word;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -125,7 +124,7 @@ button
 
     border: none;
     border-radius: 15px;
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #0F7173;
     outline: none;
 }
 #follow:hover
@@ -148,7 +147,7 @@ button
 
     border: none;
     border-radius: 15px;
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #0F7173;
     outline: none;
 
 }
@@ -206,4 +205,48 @@ body
 button, a
 {
     cursor: pointer;
+}
+
+/************************mobile*************************/
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+{
+
+
+    #cont{
+
+         height: auto;
+         min-height: 1vh;
+         background: #F3F3F3;
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+         grid-template-rows: minmax(118px, 119px) 1auto 1fr 1fr;
+         grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
+         "perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox  perfilbox"
+         ".  Poster Poster Poster Poster Poster Poster Poster Poster Poster ."
+         ". posts posts posts posts posts posts posts posts posts .";
+
+
+
+     }
+    #perfil-box
+    {
+        background-color: #272932;
+    }
+
+
+
+
+    #poster
+    {
+        grid-area: Poster;
+    }
+    #post
+    {
+        grid-area: posts;
+    }
+
 }

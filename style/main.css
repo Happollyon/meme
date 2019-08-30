@@ -1,3 +1,50 @@
+
+
+/* I hope this was helpful! */
+/* Follow me on Twitter 🐤 @sleumasm to see what I'm up to. */
+/* Also check out my other project I'm working on - Ceev.io. A pretty cool online resume creator 📃. */
+
+
+/* Your animation code is below! 👇👇👇 */
+
+
+    /*
+    @keyframes yourAnimation{
+        0%{
+            transform: rotate(0) translateX(0vw);
+        }
+        20%{
+            transform: rotate(0) translateX(-20vw);
+            opacity: 0.8;
+        }
+        40%{
+            transform: rotate(0) translateX(-40vw);
+            opacity: 0.6;
+        }
+        60%{
+            transform: rotate(0) translateX(-60vw);
+            opacity: 0.4;
+        }
+        80%{
+            transform: rotate(0) translateX(-80vw);
+            opacity: 0.2;
+        }
+        100%{
+            transform: rotate(0) translateX(-100vw);
+            opacity: 0;
+        }
+    }
+
+    .elementToAnimate{
+        animation: yourAnimation .7s infinite 0s ease;
+    }
+
+
+
+
+    */
+
+
 #cont {
     height: auto;
     background: #E7ECEF;
@@ -5,13 +52,19 @@
 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: minmax(118px, 119px) 1 auto 1fr 1fr;
-    grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu" "perfilbox perfilbox perfilbox Poster Poster Poster Poster Poster Poster Poster ." ". . . posts posts posts posts posts posts posts ." ". . . posts posts posts posts posts posts posts .";
+    grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
+    "perfilbox perfilbox perfilbox Poster Poster Poster Poster Poster Poster Poster ."
+    ". . . posts posts posts posts posts posts posts ."
+    ". . . posts posts posts posts posts posts posts .";
     grid-gap: 10px;
 
 }
 #perfil-box
-{
+{   font-size: 1vw;
     grid-area: perfilbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background: #fff;
     border-radius: 6px;
     font-family: 'Press Start 2P';
@@ -22,6 +75,44 @@
     border: 1px solid #272932;
     border-radius: 15px;
     margin-left: 1vh;
+}
+#perfil-userAndPic
+{
+    font-size: 1.5em;
+}
+#avatar
+{
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+#perfil-userAndPic>#avatar
+{
+    vertical-align: middle;
+    width: 1000px;
+    height: 100px;
+    border-radius: 50%;
+}
+#perfil-data
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#meme{
+    display: flex;
+flex-direction: column;
+}
+#seguidores
+{
+    display: flex;
+    flex-direction: column;
+}
+#seguindo
+{
+    display: flex;
+    flex-direction: column;
 }
 input[type="text" ]
 {   margin: 1vh;
@@ -80,10 +171,13 @@ input[type="submit" ]:hover
 #user
 {
     font-family: 'Press Start 2P', cursive;
+    font-size: 1.5em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 2vh;
+    margin-left: 2px;
+    margin-right: 3vh;
+    margin-top: 1vh;
 
 }
 
@@ -107,7 +201,7 @@ input[type="submit" ]:hover
     border-radius: 6px;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
 
 }
 button
@@ -117,40 +211,39 @@ button
     outline: none;
 }
 #content
-{ color: #0F7173;
+{   color: #0F7173;
     font-size: 3vh;
     display: flex;
     flex-direction: column;
-
-
+    margin-left: 72px;
+    margin-right: 3vh;
     justify-content: space-around;
 
 
 }
+#data
+{
+    color: #0F7173;
+    margin-left: 72px;
+}
+
 #interaction
 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-
-}
-#userAndPic
-{
+    margin: 1vh;
+    margin-left: 62px;
+    margin-right: 2vh;
 
 }
+
 #likes
 {
     display: flex;
     flex-direction: row;
 }
-#avatar
-    {
-    vertical-align: middle;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
+
 #avatar:hover
 {
    border: 2px solid #F05D5E;
@@ -197,4 +290,39 @@ button
 button, a
 {
     cursor: pointer;
+}
+/************************mobile*************************/
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+{
+    #cont {
+        height: auto;
+        background: #E7ECEF;
+        display: grid;
+
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: minmax(118px, 119px) 1 auto 1fr 1fr;
+        grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
+        ". Poster Poster Poster Poster Poster Poster Poster Poster Poster ."
+        ". posts posts posts posts posts posts posts posts posts ."
+        ". posts posts posts posts posts posts posts posts posts .";
+        grid-gap: 10px;
+
+    }
+    #perfil-box
+    {
+        display: none ;
+    }
+    #poster
+    {
+        grid-area: Poster;
+    }
+    #post
+    {
+        grid-area: posts;
+    }
+
 }

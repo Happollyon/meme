@@ -80,10 +80,10 @@ $num2= $result2->num_rows;// selects numbers of rows  of people user is followin
 $result3 = queryMysql("SELECT user FROM friends WHERE following='$user'");// select people following the user
 $num3 = $result3->num_rows;// selects numbers of rows of people following user
 
-echo "<div id='perfil-box'><a href='profile.php?profile=$user&user=$user'><img src='$path_profile' id='avatar'> </a>".$user."  memes: ".$num."<br><br>" //shows the name of the user and the number of posts
-        ."Seguindo: ".$num2."" // number of people following
-        ."  Seguidores:".$num3."<br><br>" // number of followers
-."</div>";
+echo "<div id='perfil-box'><div id='perfil-userAndPic'><a href='profile.php?profile=$user&user=$user'><img src='$path_profile' id='avatar'> </a>".$user."  </div><div id='perfil-data'><div id='meme'><div>memes</div>".$num."</div>" //shows the name of the user and the number of posts
+        ."<div id='seguindo'><div>Seguindo</div> ".$num2."</div>" // number of people following
+        ." <div id='seguidores'><div>Seguidores</div>".$num3."</div>" // number of followers
+."</div></div>";
 echo
 "<div id='post' class='$user'>"
 

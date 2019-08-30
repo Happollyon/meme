@@ -44,20 +44,20 @@ a
 }
 #log
 {
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #F05D5E;;
     border-radius: 10px;
     padding: 1vh;
     font-family: 'Press Start 2P', cursive;
 }
 #sing
 {
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #F05D5E;;
     padding: 1vh;
     border-radius: 10px;
     font-family: 'Press Start 2P', cursive;
     outline: none;
 }
-/***********************************************When Logged in*************************************/
+/***********************************************When Logged in  *************************************/
 #menu2
 {   width: 50%;
     display: flex;
@@ -83,6 +83,7 @@ a
     font-family: 'Press Start 2P', cursive;
     width: 15%;
     outline: none;
+    font-size: 1vw;
 }
 #perfil:hover
 {
@@ -102,6 +103,7 @@ a
     font-family: 'Press Start 2P', cursive;
     width: 15%;
     outline: none;
+    font-size: 1vw;
 }
    #sair:hover
    {background: #0fbabc;
@@ -123,9 +125,10 @@ a
     font-family: 'Press Start 2P', cursive;
     width: 15%;
     outline: none;
+    font-size: 1vw;
 }
 #search input
-{
+{   width: 100%;
     font-family: 'Press Start 2P', cursive;
     padding: 1vh;
     border-radius:10px;
@@ -133,6 +136,14 @@ a
     text-align: center;
     outline: none;
 
+}
+#menu-mobile-top
+{
+    display: none;
+}
+#menu-mobile-bottom
+{
+    display: none;
 }
 :focus
 {
@@ -145,3 +156,77 @@ a
     font-family: 'Merriweather Sans', sans-serif;
 
 }
+
+/*********************** screen 812 or less **********************/
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+{
+    #menu{display: none;}
+    #menu-mobile
+    {
+        grid-area: menu;
+    }
+
+    #menu-mobile-top
+    {
+        background: #272932;
+        grid-area: menu;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #mobile-search
+    {
+
+    }
+    #menu-mobile-top > #burguer>div
+    {
+        width: 35px;
+        height: 5px;
+        background-color: white;
+        margin: 6px 0;
+    }
+     #menu-mobile-bottom
+     {   min-height: 30vh;
+         background-color: #272932;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
+         align-items: center;
+     }
+    #hot-mobile
+    {   width: 60%;
+        background-color: #F05D5E;
+        font-family: 'Press Start 2P', cursive;
+        font-size: 3vw;
+        text-align: center;
+        min-height: 4vh;
+        border-radius: 10px;
+    }
+    #perfil-mobile
+    {   text-align: center;
+        font-family: 'Press Start 2P', cursive;
+        width: 60%;
+        min-height: 4vh;
+        border-radius: 10px;
+        background-color: #F05D5E;
+        font-size:3vw;
+    }
+    #sair-mobile
+    {   width: 60%;
+        font-family: 'Press Start 2P', cursive;
+        background-color: #F05D5E;
+        text-align: center;
+        min-height: 4vh;
+        border-radius: 10px;
+        font-size: 3vw;
+    }
+   #magnifier
+   {
+       fill: #ffffff;
+   }
+}
+

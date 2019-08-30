@@ -1,55 +1,57 @@
 <?php
 require_once 'header.php';
 require_once 'functions.php';
-echo "<div class='$user' id='selector'>";
+echo "<div id='selector-container'><div class='$user' id='selector'>";
 ?>
 <link rel="stylesheet" href="style/hot.css">
 
-<button id="hour">Hour</button>
-<button id="day">Day</button>
-<button id="week">Week</button>
-</div>
+<button id="hour" onclick="posts(1)" class="1">Hour</button>
+<button id="day" onclick="posts(24)" class="24">Day</button>
+<button id="week" onclick="posts(168)" class="168">Week</button>
+</div></div>
 <div id="posts">
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script>
-    let number = 0;
-    $('#hour').click(
-        function ()
-        {
-            let user= $('#selector').attr('class')
-            let url = 'posts.php?number=' + number + '&user=' + user;
-        $.ajax(
-            {
-                url:url,
-                tyep: 'GET',
-                success: function (data)
-                {
-                     $('#posts').append(data);
-                }
-            }
-        )
-            number= number +6;})
 
-    $(window).scroll(function ()
     {
-        let url = 'posts.php?number=' + number + '&user=' + user;  // url to be passed is created
-        if ($(window).scrollTop() + $(window).height() > $(document).height()-100)
-        {
-            $.ajax(
-                {
-                    url: url,
-                    type: 'GET',
-                    success: function (data) {
-                        $("#posts").append(data); // response is appended to page
+
+            function posts(hour) {
+                let number = 0
+                 $('div').remove('#post2')
+
+
+                let user = $('#selector').attr('class')
+                let url = 'posts.php?number=' + number + '&user=' + user + '&hour=' + hour;
+                $.ajax(
+                    {
+                        url: url,
+                        tyep: 'GET',
+                        success: function (data) {
+                            $('#posts').append(data);
+                        }
                     }
-                })
-
-            number = number + 6; //number of posts to be ignored so isn't loaded again is increased
-        }
-    })
+                )
 
 
+        number = number + 6;
+        $(window).scroll(function () {
+            let url = 'posts.php?number=' + number + '&user=' + user + '&hour='+ hour;  // url to be passed is created
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+                $.ajax(
+                    {
+                        url: url,
+                        type: 'GET',
+                        success: function (data) {
+                            $("#posts").append(data); // response is appended to page
+                        }
+                    })
+
+                number = number + 6; //number of posts to be ignored so isn't loaded again is increased
+            }
+        })
+
+    }}
 
 
     function like(like, user, post_id)        //function on click with user, post id and like value parammters
