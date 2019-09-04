@@ -9,24 +9,62 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: minmax(118px, 119px) 1auto 1fr 1fr;
     grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
-    "perfilbox perfilbox perfilbox Poster Poster Poster Poster Poster Poster Poster ."
+    "perfilbox perfilbox perfilbox posts posts posts posts posts posts posts  ."
     ". . . posts posts posts posts posts posts posts ."
     ". . . posts posts posts posts posts posts posts .";
     grid-gap: 10px;
 
 }
+#but
+{   cursor: pointer;
+    margin: 1vh;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    padding: 1vh;
+    width: 50%;
+    border: none;
+    border-radius: 15px;
+    background: #0F7173;
+    outline: none;
+
+}
 #perfil-box
 {
-    height: 30vh;
+    font-size: 1vw;
     grid-area: perfilbox;
-    background: #ffffff;
-    border-radius: 15px;
-    font-family: 'Montserrat', sans-serif;
-    max-height: 400px;
-    outline: none;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    background: #fff;
+    border-radius: 6px;
+    font-family: 'Press Start 2P';
+    max-height: 400px;
+    outline: none;
+// box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
+    color: #272932;
+    border: 1px solid #272932;
+    border-radius: 15px;
+    margin-left: 1vh;
+}
+#perfil-data
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#meme{
+    display: flex;
+    flex-direction: column;
+}
+#seguidores
+{
+    display: flex;
+    flex-direction: column;
+}
+#seguindo
+{
+    display: flex;
+    flex-direction: column;
 }
 #inf
 {
@@ -39,13 +77,16 @@
 input[type="text" i]
 {
     margin: 1vh;
+    height: 100%;
     width: 90%;
+    border: 1px solid #F05D5E;
     padding: 3vh;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     border-radius: 15px;
-    border:none;
+
     outline: none;
+
 }
 
 input[type="submit" ]
@@ -64,10 +105,13 @@ input[type="submit" ]
 
 {   grid-area: Poster;
     display: flex;
+    min-height: 33vh;
     flex-direction: column;
     justify-items: center;
-    background: rgba(255, 91, 79, 0.1);
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    outline: none;
 }
 #user{
     font-family: 'Press Start 2P', cursive;
@@ -153,10 +197,13 @@ button
 }
 #content
 {
+    color: #0F7173;
+    font-size: 3vh;
     display: flex;
     flex-direction: column;
+    margin-left: 72px;
+    margin-right: 3vh;
     justify-content: space-around;
-    margin: 1vh;
 }
 #interaction
 {
@@ -164,6 +211,14 @@ button
     flex-direction: row;
     justify-content: space-between;
     margin: 1vh;
+    margin-left: 62px;
+    margin-right: 2vh;
+}
+
+#data
+{
+    color: #0F7173;
+    margin-left: 72px;
 }
 #likes
 {
@@ -226,27 +281,22 @@ and (-webkit-min-device-pixel-ratio: 2)
          grid-template-rows: minmax(118px, 119px) 1auto 1fr 1fr;
          grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
          "perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox perfilbox  perfilbox"
-         ".  Poster Poster Poster Poster Poster Poster Poster Poster Poster ."
-         ". posts posts posts posts posts posts posts posts posts .";
-
+         "Poster Poster Poster Poster Poster Poster Poster Poster Poster Poster Poster"
+         "posts posts posts posts posts posts posts posts posts posts posts";
 
 
      }
     #perfil-box
     {
         background-color: #272932;
+        color: #F5F0FC;
+        min-height: 20vh;
+        margin-left: 0;
+        font-size: 3vw;
     }
 
 
 
 
-    #poster
-    {
-        grid-area: Poster;
-    }
-    #post
-    {
-        grid-area: posts;
-    }
 
 }

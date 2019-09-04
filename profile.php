@@ -53,7 +53,7 @@ if(isset($_FILES['profile_picture'])) {
 }
 ?>
 <?php if($profile_user == $_SESSION['user']){ ?>
-<link rel="stylesheet" href="style/profille.css" >
+<link rel="stylesheet" href="style/main.css" >
 <div id="poster">
     <form autocomplete='off' method="post" action="" enctype="multipart/form-data">
 
@@ -97,18 +97,29 @@ if(!$num4)
 
 if($profile_user !=$user)
 {
-echo "<div id='perfil-box' class='$profile_user'><div><img src='$path_profile' id='avatar'>".$profile_user."</div> <div id='follow_button'>$button</div><div id='inf'><div>memes: <div>".$num."</div>" //shows the name of the user and the number of posts
-    ."</div><div>Seguindo: <div id='following'>".$num2 // number of people following
-    ." </div></div> <div>Seguidores:<div id='followers'>".$num3."</div></div></div>" // number of followers
-    ."</div>";
+echo "<div id='perfil-box' class='$profile_user'>
+            <div id='perfil-userAndPic'><img src='$path_profile' id='avatar'>$profile_user<div id='follow_button'>$button</div></div> 
+    <div id='perfil-data'>
+            <div id='meme'><div>memes</div> $num </div>
+            <div id='seguindo'><div>Seguindo</div>$num2 </div> 
+            <div id='segidores'><div>Seguidores</div>$num3</div>
+     </div></div>";
 }else
 {
-    echo "<div id='perfil-box' class='$profile_user'><img src='$path_profile' id='avatar'>".$profile_user."  memes: ".$num."<br><br>" //shows the name of the user and the number of posts
-        ."   <form autocomplete='off' method='post' action='' enctype='multipart/form-data'> <input autocomplete='off' type='file' size='14' name='profile_picture'> "
-        ."<input id='but'type='submit' value='update'></form>"
-        ."Seguindo: ".$num2."" // number of people following
-        ."  Seguidores:".$num3."<br><br>" // number of followers
-        ."</div>";
+    echo "
+        <div id='perfil-box' class='$profile_user'>
+        <div id='perfil-userAndPic'><img src='$path_profile' id='avatar'>$profile_user </div> 
+        <form autocomplete='off' method='post' action='' enctype='multipart/form-data'> <input autocomplete='off' type='file' size='14' name='profile_picture'> 
+        <br>
+         <input id='but'type='submit' value='update'>
+         </form>
+         <div id='perfil-data'>
+        <div id='meme'><div>memes</div> $num</div> 
+         
+       <div id='seguindo'>Seguindo <div>$num2</div></div> 
+       <div id='seguidores'>Seguidores <div>$num3</div></div>  
+
+        </div></div>";
 }
 
 echo

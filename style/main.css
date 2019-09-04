@@ -90,7 +90,7 @@
 #perfil-userAndPic>#avatar
 {
     vertical-align: middle;
-    width: 1000px;
+    width: 100px;
     height: 100px;
     border-radius: 50%;
 }
@@ -116,17 +116,14 @@ flex-direction: column;
 }
 input[type="text" ]
 {   margin: 1vh;
-    height: 100%;
+
     width: 90%;
     border: 1px solid #F05D5E;
     padding: 3vh;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     border-radius: 15px;
-
     outline: none;
-
-
 }
 
 input[type="submit" ]
@@ -161,12 +158,18 @@ input[type="submit" ]:hover
     display: flex;
     min-height: 33vh;
     flex-direction: column;
-    justify-items: center;
-
+    justify-content: space-between;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     outline: none;
+}
+#dd
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 #user
 {
@@ -178,7 +181,6 @@ input[type="submit" ]:hover
     margin-left: 2px;
     margin-right: 3vh;
     margin-top: 1vh;
-
 }
 
 #post
@@ -186,23 +188,21 @@ input[type="submit" ]:hover
     grid-area: posts;
     display: flex;
     flex-direction: column;
-
 }
 
-#post2{ overflow-wrap: break-word;
+#post2{
+    overflow-wrap: break-word;
     font-size: 1em;
     color: black;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-content: flex-start;
-
     background: #ffffff;
     border-radius: 6px;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 3vh;
-
 }
 button
 {
@@ -218,8 +218,6 @@ button
     margin-left: 72px;
     margin-right: 3vh;
     justify-content: space-around;
-
-
 }
 #data
 {
@@ -235,7 +233,6 @@ button
     margin: 1vh;
     margin-left: 62px;
     margin-right: 2vh;
-
 }
 
 #likes
@@ -257,9 +254,8 @@ button
     width: 50%;
     border: none;
     border-radius: 15px;
-    background: linear-gradient(180deg, #02B34B 0%, #36FF89 100%);
+    background: #0F7173;
     outline: none;
-
 }
 #numb
 {
@@ -268,7 +264,6 @@ button
 
 .commenter
 {
-
     background: #fff;
     box-shadow: 5px 4px 25px rgba(14, 59, 72, 0.25);
     border-radius: 6px;
@@ -280,7 +275,6 @@ button
 .comments
 {
     max-width: 90%;
-
     background: #E7ECEF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
@@ -290,6 +284,12 @@ button
 button, a
 {
     cursor: pointer;
+}
+
+#postar_btn
+{
+   float: right;
+   margin-bottom: 1vh;
 }
 /************************mobile*************************/
 
@@ -306,10 +306,10 @@ and (-webkit-min-device-pixel-ratio: 2)
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-rows: minmax(118px, 119px) 1 auto 1fr 1fr;
         grid-template-areas: "menu menu menu menu menu menu menu menu menu menu menu"
-        ". Poster Poster Poster Poster Poster Poster Poster Poster Poster ."
-        ". posts posts posts posts posts posts posts posts posts ."
-        ". posts posts posts posts posts posts posts posts posts .";
-        grid-gap: 10px;
+        "Poster Poster Poster Poster Poster Poster Poster Poster Poster Poster Poster"
+        "posts posts posts posts posts posts posts posts posts posts posts"
+        "posts posts posts posts posts posts posts posts posts posts posts";
+
 
     }
     #perfil-box

@@ -53,12 +53,12 @@ if(isset($_POST['text']) && $_POST['text']!="" && isset($_FILES['image']['type']
 <div id="poster">
     <form method="post"autocomplete='off' action="" enctype="multipart/form-data">
 
-            <input autocomplete='off' id='texto' onkeyup="counter()" type="text" placeholder="Me faca rir" name="text">
-
-            <input autocomplete='off' type="file" size="14" name="image">
+          <div>  <input autocomplete='off' id='texto' onkeyup="counter()" type="text" placeholder="Me faca rir" name="text"> </div>
+        <div id='dd'>
+           <div> <input autocomplete='off' type="file" size="14" name="image"></div>
             <div id="numb"></div>
         <div id="postar_btn"><input type="submit" value="Postar"></div>
-
+        </div>
 </form>
     <br>
 </div>
